@@ -1,0 +1,25 @@
+.cl{
+    font-size:xx-large;
+    background-color: rgb(199, 40, 199);
+}
+.al{
+    background-color: rgb(233, 113, 233);
+}
+.header{
+    text-align: center;
+    background-color: rgb(232, 33, 250);
+}
+.aa{
+    height: 2.3cm;
+}
+.bb{
+    height: 2.3cm;
+    width: 40cm;
+}
+.button{
+    position: absolute;
+    height: 1.5cm;
+}
+.space{
+    height: 2.5cm;
+}
