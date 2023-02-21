@@ -25,17 +25,14 @@ const Image = () => {
                             </CardContent>
                     </CardActionArea>
                     <Box flex={1}>
-               
-                    
-                    <Box sx={{'& > legend': { mt: 2 }}}>
-                    <Stack sx={{marginTop:'5px'}} direction="row" spacing={2} paddingLeft="40%" alignItems="center">  
-                        <FavoriteIcon />
-                        <Rating/>
-                        <ShareIcon/>
-                        <MessageIcon/>
-                    </Stack>
-                    </Box>
-                 
+                        <Box sx={{'& > legend': { mt: 2 }}}>
+                            <Stack sx={{marginTop:'5px'}} direction="row" spacing={2} paddingLeft="40%" alignItems="center">  
+                                <FavoriteIcon />
+                                <Rating/>
+                                <ShareIcon/>
+                                <MessageIcon/>
+                            </Stack>
+                        </Box>
                     </Box>    
                 </Card>
             </Box>

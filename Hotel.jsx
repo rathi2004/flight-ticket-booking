@@ -8,59 +8,42 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import {CardMedia, CardActions, CardContent } from '@mui/material';
+import Hotel from '../asests/hotelreserve.webp';
 import HomeIcon from './homeicon';
 import { Stack } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { RadioGroup, TextField } from '@mui/material';
-import Lounge from '../asests/lounge.mp4';
-import Radio from '@mui/material/Radio';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
+import Hoteltree from '../asests/hoteltree.webp';
+import Hotelsis from '../asests/hotelsis.webp';
+import TextField from '@mui/material/TextField';
+import Playboy from '../asests/playboy.webp';
+import Phone from '../asests/phone.jpg';
+import './Hotel.css';
 import {useNavigate } from 'react-router-dom';
-import './Tickets.css';
 
-function Tickets(){
-  
-    const navigate=useNavigate();
+function DrawerAppBar() {
+  const navigate=useNavigate();
 
 
     function checkdata  (){
         
-
-        
-        let fr=document.getElementById("from").value;
-        let to=document.getElementById("To").value;
-        let dp=document.getElementById("departure").value;
-        let rt=document.getElementById("return").value;
-        let tk=document.getElementById("ticket").value;
-        let cl=document.getElementById("class").value;
-       
-         if(fr===""){
-            alert("please enter flying From");
+        let hoteldesti=document.getElementById("hoteldesti").value;
+        let hotelcheckout=document.getElementById("hotelcheckout").value;     
+        let hotelcheckin=document.getElementById("hotelcheckin").value;     
+        if(hoteldesti===""){
+            alert("please enter destination");
         }
         
-        else if(to===""){
-            alert("please enter flying To");
+        else if(hotelcheckout===""){
+            alert("please chose check out date");
         }
-        else if(dp===""){
-            alert("please enter Depature");
-        }
-        else if(rt===""){
-            alert("please enter Returning");
-        }
-        else if(tk===""){
-            alert("please select no of Ticket");
-        }
-        else if(cl===""){
-            alert("please enter Class");
+        else if(hotelcheckin===""){
+            alert("please choose check in date");
         }
         else{
-            navigate('/Availableflights');
+            navigate('/Hotel');
         }
     }
-
-
-    
 
   const [auth] = React.useState(true);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -235,102 +218,95 @@ function Tickets(){
         </Toolbar>
       </AppBar>
       
-      <div>
-           
-          <div>
+      <Box component="main" sx={{ p: 3 }}>
+        <div style={{marginTop:"3%", position:"absolute"}}>
+        <CardMedia component="img"image={Hotel}/>
+        </div>
+        <div className='pichotel'>
+          <p id="trip5">PLANNING YOUR TRIP</p>
+          <b><p id="trip6">Book or reserve a hotel</p></b>
+          <p id="trip7">Book your stay before purchasing your flight, add it to your itinerary later through<br></br> Manage your booking or even make a reservation without booking a flight.</p>
+        </div>
+        <div className='Hotels'>
+        <hr></hr>
+        <p className='whyhotel'>Why should I book a hotel through Dragon Air? </p>
+          <Stack direction="row" spacing={12}>
             
-          <video  autoPlay loop  
-              style={{position:"absolute",
-              width:"100%",
-              height:"50%" ,
-              left:"13%",
-              top:"50%",
-              transform:"translate(-50%,-50%)",
-              marginTop:"0%"}}>
-              <source src={Lounge} />
-          </video> 
-          </div>
-          
-          
-          <Stack paddingLeft={110} paddingTop={10} id="bookback">
-                <p id="book1">BOOK</p>
-                <p id="book2">Book Your Flight</p>
-                <p id="book3">Search for Dragon flights and book online. See our routes and schedules, and discover more about the experience you can look forward to on board.</p>
+            <div>
+              <Typography id="c1">
+              
+              <CardActions>
+              <img width="200px" height="200px" src={Hoteltree} alt="e" id="circle"/>
+
+              </CardActions><br></br>
+                 Earn Skywards Miles on every booking 
+              </Typography>
+
+             
+            </div>
+            <div>
+              <Typography id="c1">
+              <CardActions>
+                <img width="200px" height="200px" src={Playboy} alt="e" id="circle"/>
+              </CardActions><br></br>
+              Daily offers and rates to suit every budget
+              </Typography>
+            </div>
+            <div>
+               <Typography id="c1">
+             <CardActions>
+              <img width="200px" height="200px" src={Hotelsis} alt="e" id="circle"/>
+             </CardActions><br></br>
+               24/7 contact centre support,<br></br> available in 42 languages
+               </Typography>
+            </div>
+            <div>
+              <Typography id="c1">
+            <CardActions>
+              <img width="200px" height="200px" src={Phone} alt="e" id="circle"/>
+            </CardActions><br></br>
+              Friends checking online using<br></br> a laptop and a smart phone
+
+              </Typography>
+            </div>
+          </Stack>
+          <hr></hr>
+        </div>
+
+        <div className='pictypehotel'>
+         
+            
+        <Card>
+        <CardContent>
+                <Link style={{color:" rgba(197, 15, 15, 0.996)"}} to="/">Log in to earn miles on your trips</Link>
                 <form>
                 <Box
                   component="form"
                   sx={{
-                    '& > :not(style)': { m: 1, width: '35ch' },
+                    '& > :not(style)': { m: 1, width: '25ch' },
                   }}
                   noValidate
                   autoComplete="off"
                 >
-                    
-                        <FormLabel id="tripcolor">Trip</FormLabel>    
-                        <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                        >
-                        <Stack direction="row" spacing={1}>
-                            <FormControlLabel value="female" control={<Radio />} label="RoundTrip" />
-                            <FormControlLabel value="male" control={<Radio />} label="Oneway" />
-                            <FormControlLabel value="other" control={<Radio />} label="Multiway" />
-                        </Stack>
-                        </RadioGroup>
-                        <TextField type="text" helperText="Please enter flying from " label="Flying From" variant="outlined"  InputLabelProps={{shrink: true}} id="from" />
-                        <TextField type="text" helperText="Please enter flying to" label="Flying To" variant="outlined"  InputLabelProps={{shrink: true}} id="To" />
-                        <TextField type="date" helperText="Please select Departure date" label="Departure" variant="outlined"  InputLabelProps={{shrink: true}} id="departure" />
-                        <TextField type="date" helperText="Please select Returning date" label="Returning" variant="outlined"  InputLabelProps={{shrink: true}} id="return" />
-                        <TextField type="number" helperText="Please select no of tickets" label="No of tickets" variant="outlined"  InputLabelProps={{shrink: true}} id="ticket" />
-
-                        <TextField
-                        id="class"
-                        select
-                        label="Travel class"
-                        defaultValue="EC"
-                        helperText="Please select your class"
-                        >
-                        {currencies.map((option) => (
-                            <MenuItem key={option.value} value={option.value} >
-                            {option.label}
-                            </MenuItem>
-                        ))}
-                        </TextField>
-                        <button  id="ticbut" onClick={checkdata}>Show Flights</button>
-                       
+                  <TextField type="text" label="Destination" variant="outlined"  InputLabelProps={{shrink: true,}} id="hoteldesti" />
+                  <TextField type="date" label="check out" variant="outlined"  InputLabelProps={{shrink: true,}} id="hotelcheckout" />
+                  <TextField type="date" label="check in" variant="outlined"  InputLabelProps={{shrink: true,}} id="hotelcheckin" />
+                  <button  id="fhotel" onClick={checkdata}>Find hotels</button>
                   
                 </Box>
                 </form>
-                
-          </Stack>
-           
-        
-      </div>
+
+              
+        </CardContent>
+        </Card>
+        </div>
+      </Box>
     </Box>
   );
 }
 
-Tickets.propTypes = {
+DrawerAppBar.propTypes = {
   window: PropTypes.func,
 };
-const currencies = [
-    {
-        value: 'EC',
-        label: 'Economy class',
-    },
-    {
-        value: 'PEC',
-        label: 'Premium-economy class ',
-    },
-    {
-        value: 'BC',
-        label: 'Business class',
-    },
-    {
-        value: 'FC',
-        label: 'First class',
-    }
-];
 
-export default Tickets;
+export default DrawerAppBar;

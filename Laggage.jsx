@@ -16,51 +16,54 @@ import Lounge from '../asests/lounge.mp4';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
+import Baggage from '../asests/baggage.avif';
+import CardMedia from '@mui/material/CardMedia';
 import {useNavigate } from 'react-router-dom';
-import './Tickets.css';
+import Checkin from '../asests/Checkin.jpg';
+import './laggage.css';
 
-function Tickets(){
+import './Hotel.css';
+
+function Laggage() {
   
-    const navigate=useNavigate();
+  const navigate=useNavigate();
 
 
-    function checkdata  (){
-        
+  function checkdata  (){
+      
 
-        
-        let fr=document.getElementById("from").value;
-        let to=document.getElementById("To").value;
-        let dp=document.getElementById("departure").value;
-        let rt=document.getElementById("return").value;
-        let tk=document.getElementById("ticket").value;
-        let cl=document.getElementById("class").value;
-       
-         if(fr===""){
-            alert("please enter flying From");
-        }
-        
-        else if(to===""){
-            alert("please enter flying To");
-        }
-        else if(dp===""){
-            alert("please enter Depature");
-        }
-        else if(rt===""){
-            alert("please enter Returning");
-        }
-        else if(tk===""){
-            alert("please select no of Ticket");
-        }
-        else if(cl===""){
-            alert("please enter Class");
-        }
-        else{
-            navigate('/Availableflights');
-        }
-    }
+      
+      let fr=document.getElementById("from").value;
+      let to=document.getElementById("To").value;
+      let dp=document.getElementById("departure").value;
+      let rt=document.getElementById("return").value;
+      let tk=document.getElementById("ticket").value;
+      let cl=document.getElementById("class").value;
+     
+       if(fr===""){
+          alert("please enter flying From");
+      }
+      
+      else if(to===""){
+          alert("please enter flying To");
+      }
+      else if(dp===""){
+          alert("please enter Depature");
+      }
+      else if(rt===""){
+          alert("please enter Returning");
+      }
+      else if(tk===""){
+          alert("please select no of Ticket");
+      }
+      else if(cl===""){
+          alert("please enter Class");
+      }
+      else{
+          navigate('/Availableflights');
+      }
+  }
 
-
-    
 
   const [auth] = React.useState(true);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -235,28 +238,37 @@ function Tickets(){
         </Toolbar>
       </AppBar>
       
-      <div>
-           
-          <div>
-            
-          <video  autoPlay loop  
-              style={{position:"absolute",
-              width:"100%",
-              height:"50%" ,
-              left:"13%",
-              top:"50%",
-              transform:"translate(-50%,-50%)",
-              marginTop:"0%"}}>
-              <source src={Lounge} />
-          </video> 
-          </div>
-          
-          
-          <Stack paddingLeft={110} paddingTop={10} id="bookback">
-                <p id="book1">BOOK</p>
-                <p id="book2">Book Your Flight</p>
-                <p id="book3">Search for Dragon flights and book online. See our routes and schedules, and discover more about the experience you can look forward to on board.</p>
-                <form>
+      <div style={{marginTop:"4.4%", position:"absolute"}}>
+        <CardMedia component="img"image={Baggage}/>
+        <p>Home Check-in</p>
+        <Stack direction="row">
+          <Stack>
+          <CardMedia component="img"image={Checkin} id="checkpic"/>
+          </Stack>
+          <Stack>
+
+          <form>
+                  <Box
+                    component="form"
+                    sx={{
+                      '& > :not(style)': { m: 1, width: '35ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    
+                          <TextField type="number" helperText="(above 12 years)" label="Adults" variant="outlined"  InputLabelProps={{shrink: true}} id="ticket" />
+                          <TextField type="number" helperText="(from 2 to 12 years)" label="Children" variant="outlined"  InputLabelProps={{shrink: true}} id="ticket" />
+                          <TextField type="number" helperText="(below 2 years)" label="Infants" variant="outlined"  InputLabelProps={{shrink: true}} id="ticket" />
+                          <button  id="lagbut" onClick={checkdata}>Show Flights</button>
+                        
+                    
+                  </Box>
+                  </form>
+          </Stack>
+
+        </Stack>
+        <form>
                 <Box
                   component="form"
                   sx={{
@@ -266,18 +278,7 @@ function Tickets(){
                   autoComplete="off"
                 >
                     
-                        <FormLabel id="tripcolor">Trip</FormLabel>    
-                        <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                        >
-                        <Stack direction="row" spacing={1}>
-                            <FormControlLabel value="female" control={<Radio />} label="RoundTrip" />
-                            <FormControlLabel value="male" control={<Radio />} label="Oneway" />
-                            <FormControlLabel value="other" control={<Radio />} label="Multiway" />
-                        </Stack>
-                        </RadioGroup>
+                           
                         <TextField type="text" helperText="Please enter flying from " label="Flying From" variant="outlined"  InputLabelProps={{shrink: true}} id="from" />
                         <TextField type="text" helperText="Please enter flying to" label="Flying To" variant="outlined"  InputLabelProps={{shrink: true}} id="To" />
                         <TextField type="date" helperText="Please select Departure date" label="Departure" variant="outlined"  InputLabelProps={{shrink: true}} id="departure" />
@@ -302,16 +303,11 @@ function Tickets(){
                   
                 </Box>
                 </form>
-                
-          </Stack>
-           
-        
-      </div>
+        </div>
     </Box>
   );
 }
-
-Tickets.propTypes = {
+Laggage.propTypes = {
   window: PropTypes.func,
 };
 const currencies = [
@@ -333,4 +329,4 @@ const currencies = [
     }
 ];
 
-export default Tickets;
+export default Laggage;

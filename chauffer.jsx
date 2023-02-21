@@ -8,59 +8,33 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { CardContent } from '@mui/material';
 import HomeIcon from './homeicon';
 import { Stack } from '@mui/system';
 import { Link } from 'react-router-dom';
-import { RadioGroup, TextField } from '@mui/material';
-import Lounge from '../asests/lounge.mp4';
-import Radio from '@mui/material/Radio';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import {useNavigate } from 'react-router-dom';
-import './Tickets.css';
+import './chauffer.css';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import CloseIcon from '@mui/icons-material/Close';
 
-function Tickets(){
+
+
+function Chauffer() {
   
-    const navigate=useNavigate();
 
 
-    function checkdata  (){
-        
-
-        
-        let fr=document.getElementById("from").value;
-        let to=document.getElementById("To").value;
-        let dp=document.getElementById("departure").value;
-        let rt=document.getElementById("return").value;
-        let tk=document.getElementById("ticket").value;
-        let cl=document.getElementById("class").value;
-       
-         if(fr===""){
-            alert("please enter flying From");
-        }
-        
-        else if(to===""){
-            alert("please enter flying To");
-        }
-        else if(dp===""){
-            alert("please enter Depature");
-        }
-        else if(rt===""){
-            alert("please enter Returning");
-        }
-        else if(tk===""){
-            alert("please select no of Ticket");
-        }
-        else if(cl===""){
-            alert("please enter Class");
-        }
-        else{
-            navigate('/Availableflights');
-        }
-    }
-
-
-    
+  const [open, setOpen] = React.useState(false);
+  
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const [auth] = React.useState(true);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -234,103 +208,116 @@ function Tickets(){
           
         </Toolbar>
       </AppBar>
-      
-      <div>
-           
-          <div>
-            
-          <video  autoPlay loop  
-              style={{position:"absolute",
-              width:"100%",
-              height:"50%" ,
-              left:"13%",
-              top:"50%",
-              transform:"translate(-50%,-50%)",
-              marginTop:"0%"}}>
-              <source src={Lounge} />
-          </video> 
-          </div>
-          
-          
-          <Stack paddingLeft={110} paddingTop={10} id="bookback">
-                <p id="book1">BOOK</p>
-                <p id="book2">Book Your Flight</p>
-                <p id="book3">Search for Dragon flights and book online. See our routes and schedules, and discover more about the experience you can look forward to on board.</p>
-                <form>
-                <Box
-                  component="form"
-                  sx={{
-                    '& > :not(style)': { m: 1, width: '35ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                    
-                        <FormLabel id="tripcolor">Trip</FormLabel>    
-                        <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                        >
-                        <Stack direction="row" spacing={1}>
-                            <FormControlLabel value="female" control={<Radio />} label="RoundTrip" />
-                            <FormControlLabel value="male" control={<Radio />} label="Oneway" />
-                            <FormControlLabel value="other" control={<Radio />} label="Multiway" />
-                        </Stack>
-                        </RadioGroup>
-                        <TextField type="text" helperText="Please enter flying from " label="Flying From" variant="outlined"  InputLabelProps={{shrink: true}} id="from" />
-                        <TextField type="text" helperText="Please enter flying to" label="Flying To" variant="outlined"  InputLabelProps={{shrink: true}} id="To" />
-                        <TextField type="date" helperText="Please select Departure date" label="Departure" variant="outlined"  InputLabelProps={{shrink: true}} id="departure" />
-                        <TextField type="date" helperText="Please select Returning date" label="Returning" variant="outlined"  InputLabelProps={{shrink: true}} id="return" />
-                        <TextField type="number" helperText="Please select no of tickets" label="No of tickets" variant="outlined"  InputLabelProps={{shrink: true}} id="ticket" />
 
-                        <TextField
-                        id="class"
-                        select
-                        label="Travel class"
-                        defaultValue="EC"
-                        helperText="Please select your class"
-                        >
-                        {currencies.map((option) => (
-                            <MenuItem key={option.value} value={option.value} >
-                            {option.label}
-                            </MenuItem>
-                        ))}
-                        </TextField>
-                        <button  id="ticbut" onClick={checkdata}>Show Flights</button>
-                       
-                  
-                </Box>
-                </form>
-                
-          </Stack>
-           
+            <div >
+                <Stack sx={{marginTop:'4.4%'}} direction='column' spacing={1} paddingLeft="16%" paddingRight="16%">
+                    <Stack>
+                        <div id="seati">
+                            <div id="seatq">
+                                THE DRAGON EXPERIENCE
+                                <p id="seatq1">CHAUFFER DRIVE</p>
+                            </div>
+                        </div>
+                    </Stack>
+                    <Stack id="seattext">
+                        <CardContent>
+                            <Typography gutterBottom variant="body2" component="div" id="seathead">
+                                Fly First Class or Business Class and We'll drive for you from the Airport
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" id="seats">
+                                Chaffeur-driver is available in nearly all our destinations.
+                                The safety and wellbeing of all our customers and our drivers is our highest priority.
+                                And the interior is sanitised after every trip, including buckles, handles, buttons,switches and blinds.<br></br>
+                                The car is completely cleaned and disinfected from the start of every driver's duty.
+                            </Typography>
+                            <div>
+                                <Button variant="contained" onClick={handleClickOpen} id="seatbutton">
+                                    Choose Place
+                                </Button>
+                                <BootstrapDialog onClose={handleClose} open={open}>
+
+                                    <BootstrapDialogTitle id="dialoghead" onClose={handleClose}>
+                                        <b>Allow us to help you reach your destination</b> 
+                                    </BootstrapDialogTitle>
+                                    <DialogContent dividers>
+                                        <table id="dialogtab">
+
+                                        <tr>
+                                            <label id="dialoglable">Drop Off</label>
+                                        </tr>
+                                        <tr>
+                                            <input className='dialogone'  type="text" placeholder="DESTINATION" required/>
+                                        </tr>
+                                        <tr>
+                                            <label id="dialoglable">Service</label>
+                                        </tr>
+                                        <tr>
+                                            <select className='dialogone'>
+                                                <option>SELECT</option>
+                                                <option>Regular</option>
+                                                <option>Premiem</option>
+                                                <option>Luxury</option>
+                                            </select>
+                                        </tr>
+                                        </table>
+                                            
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleClose}>
+                                        CONFRIM
+                                        </Button>
+                                    </DialogActions>
+                                </BootstrapDialog>
+                            </div>
+                        </CardContent>
+                    </Stack>
+                </Stack>
+            </div>
         
-      </div>
     </Box>
+    
   );
 }
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+    '& .MuiDialogContent-root': {
+      padding: theme.spacing(2),
+    },
+    '& .MuiDialogActions-root': {
+      padding: theme.spacing(1),
+    },
+  }));
+  
+  function BootstrapDialogTitle(props) {
+    const { children, onClose, ...other } = props;
+  
+    return (
+      <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+        {children}
+        {onClose ? (
+          <IconButton
+            aria-label="close"
+            onClick={onClose}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </DialogTitle>
+    );
+  }
+  
+  BootstrapDialogTitle.propTypes = {
+    children: PropTypes.node,
+    onClose: PropTypes.func.isRequired,
+  };
 
-Tickets.propTypes = {
+Chauffer.propTypes = {
   window: PropTypes.func,
 };
-const currencies = [
-    {
-        value: 'EC',
-        label: 'Economy class',
-    },
-    {
-        value: 'PEC',
-        label: 'Premium-economy class ',
-    },
-    {
-        value: 'BC',
-        label: 'Business class',
-    },
-    {
-        value: 'FC',
-        label: 'First class',
-    }
-];
 
-export default Tickets;
+export default Chauffer;

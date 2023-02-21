@@ -68,7 +68,7 @@ function Form() {
         <div className="button-container" style={{alignItems:'center'}}>
           <button id="btn" style={{backgroundColor:"skyblue"}}>Log in</button>
           <p id="rem">If you have an account log in here</p>
-        <Link style={{marginLeft:"35%"}}>Forget password</Link>
+        <Link to="/Forget" style={{marginLeft:"35%"}}>Forget password</Link>
        </div>
       </form>
       </div>

@@ -1,25 +1,33 @@
-.cl{
-    font-size:xx-large;
-    background-color: rgb(199, 40, 199);
-}
-.al{
-    background-color: rgb(233, 113, 233);
-}
-.header{
+.table5{
+    width: 80%;
     text-align: center;
-    background-color: rgb(232, 33, 250);
+    border: 1px solid black;
+    border-collapse: collapse;
+   
 }
-.aa{
-    height: 2.3cm;
+.r10{
+    background-color:rgb(113, 186, 215);
+    height:1.5cm;
+    font-size: x-large;
 }
-.bb{
-    height: 2.3cm;
+.r101{
+    height: 1cm;
+}
+.r102{
+    background-color:rgb(115, 247, 245);
+    height: 1cm;
+}
+.head5{
     width: 40cm;
 }
-.button{
-    position: absolute;
-    height: 1.5cm;
+.arrow5{
+    padding-top: 10px;
+    height: 48px;
+    padding-left: 15px;
 }
-.space{
-    height: 2.5cm;
+.aa5{
+    text-align: center;
+}
+.secback{
+    background-color:rgb(113, 186, 215);
 }

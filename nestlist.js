@@ -9,27 +9,74 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
 import FlightIcon from '@mui/icons-material/Flight';
-import PlaceIcon from '@mui/icons-material/Place';
 import CardGiftcardOutlinedIcon from '@mui/icons-material/CardGiftcardOutlined';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import ExploreIcon from '@mui/icons-material/Explore';
 import HelpIcon from '@mui/icons-material/Help';
 import { Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import PinDropIcon from '@mui/icons-material/PinDrop';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import InfoIcon from '@mui/icons-material/Info';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 
 export default function NestedList() {
     
     const [openPlace, setOpenPlace] = React.useState(false);
+    const navigate=useNavigate();
 
     const handleClickPlace = () => {
         setOpenPlace(!openPlace);
+    }
+    
+    const [openHelp, setOpenHelp] = React.useState(false);
+    const handleClickHelp = () => {
+        setOpenHelp(!openHelp);
     }
     const [openTrip, setOpenTrip] = React.useState(false);
 
     const handleClickTrip = () => {
         setOpenTrip(!openTrip);
   };
+
+  const ticket =() =>{
+        navigate('/Ticket');
+  }
+  const coupon =() =>{
+        navigate('/Coupon');
+  }
+  const chaufferDrive =() =>{
+        navigate('/Chauffer');
+  }
+  const Visa =() =>{
+        navigate('/Requirement');
+  }
+  const Health =() =>{
+        navigate('/Health');
+  }
+  const Laggage =() =>{
+        navigate('/Laggage');
+  }
+  const Food =() =>{
+        navigate('/Food');
+  }
+  const  Safety=() =>{
+        navigate('/Safety');
+  }
+  const  feedback=() =>{
+        navigate('/Feedback');
+  }
+  const  Schedule=() =>{
+        navigate('/Schedule');
+  }
+  const  Hotel=() =>{
+        navigate('/Hotel');
+  }
+
+
 
   return (
     <Box flex={1}>
@@ -52,25 +99,41 @@ export default function NestedList() {
         </ListItemButton>
         <ListItemButton onClick={handleClickPlace}>
             <ListItemIcon>
-                <PlaceIcon />
+                <MiscellaneousServicesIcon />
             </ListItemIcon>
-            <ListItemText primary="Choose Place" />
+            <ListItemText primary="Services" />
             {openPlace ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
             <Collapse in={openPlace} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <PlaceIcon/>
+              <PinDropIcon/>
             </ListItemIcon>
-            <ListItemText primary="From" />
+            <ListItemText primary="Chauffer Drive" onClick={chaufferDrive} />
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <PinDropIcon/>
+              <RestaurantMenuIcon/>
             </ListItemIcon>
-            <ListItemText primary="To" />
+            <ListItemText primary="Food" onClick={Food} />
           </ListItemButton>
+          <List component="div" disablePadding>
+                <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemIcon>
+                        <HelpIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Hotel" onClick={Hotel}  />
+                </ListItemButton>
+            </List>
+          <List component="div" disablePadding>
+                <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemIcon>
+                        <HelpIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Laggage" onClick={Laggage}  />
+                </ListItemButton>
+            </List>
         </List>
             </Collapse>
         <ListItemButton onClick={handleClickTrip}>
@@ -86,15 +149,7 @@ export default function NestedList() {
                     <ListItemIcon>
                         <CardGiftcardOutlinedIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Coupons" />
-                </ListItemButton>
-            </List>
-            <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                        <FavoriteIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Wishlist" />
+                    <ListItemText primary="Coupons" onClick={coupon} />
                 </ListItemButton>
             </List>
             <List component="div" disablePadding>
@@ -102,23 +157,50 @@ export default function NestedList() {
                     <ListItemIcon>
                         <AirplaneTicketIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Tickets" />
+                    <ListItemText primary="Tickets" onClick={ticket}/>
                 </ListItemButton>
-            </List>
+            </List>  
             <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 4 }}>
                     <ListItemIcon>
                         <ExploreIcon/>
                     </ListItemIcon>
-                    <ListItemText primary="Explore" />
+                    <ListItemText primary="Schedule" onClick={Schedule} />
                 </ListItemButton>
             </List>
+      </Collapse>
+        <ListItemButton onClick={handleClickHelp}>
+            <ListItemIcon>
+            <HelpIcon/>
+            </ListItemIcon>
+        <ListItemText primary="Help" />
+        {openTrip ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openHelp} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <InfoIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Visa and Passport" onClick={Visa}/>
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <MedicalInformationIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Travel Health" onClick={Health} />
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <HealthAndSafetyIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Safety Info" onClick={Safety} />
+          </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                     <ListItemIcon>
-                        <HelpIcon/>
+                        <FeedbackIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Help" />
+                    <ListItemText primary="Feedback" onClick={feedback} />
                 </ListItemButton>
             </List>
       </Collapse>

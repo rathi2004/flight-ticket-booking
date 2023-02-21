@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
 import './signup.css';
-class Signup extends Component {
-  render() { 
+function Signup() {   
     return (
       <div className='signup'>
         <div id="back">
@@ -15,7 +13,7 @@ class Signup extends Component {
           ALREADY HAVE ACCOUNT?
           <Link to="/">Login here</Link>
           </div>
-        <form action=''>
+        <form action='/Home'>
           <table>
             <tr>
               <p><th><lable for="name">Name</lable></th></p>
@@ -76,14 +74,14 @@ class Signup extends Component {
             </tr>
           </table>
           <div id="cb">
-            <input type="checkbox" required />
+            <input type="checkbox" value="ckeck"required />
             by signing up you agree to receive updates and special offers
           </div>
-          <button id="but"><Link to="/Home" id="cas">Submit</Link></button>
+          <button id="but">Submit</button>
         </form>
       </div>
     );
-  }
+  
 }
  
 export default Signup;
